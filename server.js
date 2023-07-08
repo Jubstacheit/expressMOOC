@@ -14,7 +14,7 @@ const contactController = new ContactController("contact");
 const app = express();
 
 
-app.use(express.static(path.join(__dirname, './phantom')));
+app.use(express.static(path.join(__dirname, '/phantom')));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.set('view engine', 'ejs')
