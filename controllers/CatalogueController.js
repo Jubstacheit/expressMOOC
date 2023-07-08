@@ -19,6 +19,25 @@ class CatalogueController {
             return { id: disc.id, title: disc.title, band: disc.band, image: disc.image}
         })
     }
+
+    async getDisc(id) {
+        const data = await this.loadCatalog();
+
+        const disc = data.find(d => {
+            return d.id == id;
+        })
+
+        if(!disc) {
+            return null;
+        }
+
+        return {
+            id: disc.id,
+            title: disc.title,
+            band: disc.band,
+            image: disc.image,
+        }
+    }
     /*getData() {
         return this.data;
     }*/
