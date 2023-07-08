@@ -1,11 +1,11 @@
 <footer id="footer">
     <div class="inner">
         <section>
-            <h2>Get in touch</h2>
-            <form method="post" action="#">
+            <h2>Poser une question</h2>
+            <form method="post" action="/contact">
                 <div class="fields">
                     <div class="field half">
-                        <input type="text" name="name" id="name" placeholder="Name" />
+                        <input type="text" name="name" id="name" placeholder="Nom" />
                     </div>
                     <div class="field half">
                         <input type="email" name="email" id="email" placeholder="Email" />
@@ -15,12 +15,12 @@
                     </div>
                 </div>
                 <ul class="actions">
-                    <li><input type="submit" value="Send" class="primary" /></li>
+                    <li><input type="submit" value="Envoyer" class="primary" /></li>
                 </ul>
             </form>
         </section>
         <section>
-            <h2>Follow</h2>
+            <h2>Suivre</h2>
             <ul class="icons">
                 <%socials.forEach(function(social) {%>
                     <li><a href="<%=social.url%>" class="icon brands style2 <%=social.class %>" target="_blank">
