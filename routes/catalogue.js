@@ -3,7 +3,7 @@ const router = express.Router()
 
 module.exports = () => {
     router.get('/', (req, res) => {
-        res.render('pages/catalogue', {pageTitle: 'Bienvenue sur le catalogue'})
+        res.render('layouts', {pageTitle: 'Bienvenue sur le catalogue', page: "catalogue"})
     })
 
     return router;

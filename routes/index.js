@@ -6,7 +6,7 @@ const aproposRoute = require('./apropos');
 
 module.exports = () => {
     router.get('/', (req, res) => {
-        res.render('pages/generic', {pageTitle: `Bienvenue sur la boîte à musique`})
+        res.render('layouts', {pageTitle: `Bienvenue sur la boîte à musique`, page: "index"})
     })
 
     router.use('/catalogue', catalogueRoute());
