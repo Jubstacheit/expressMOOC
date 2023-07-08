@@ -1,9 +1,12 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const port = 3000
-const router = require('./routes');
 
+const port = 3000
+
+const router = require('./routes');
+const CatalogueController = require('./controllers/CatalogueController');
+const catalogueController = new CatalogueController("Je suis le catalogue");
 const app = express();
 
 
@@ -29,7 +32,9 @@ app.use((req, res, next) => {
     console.log(`Time : ${Date.now()}, ${req.method} ${req.url}`)
     next();
 })
-app.use('/', router());
+app.use('/', router({
+    catalogueController
+}));
 
 app.listen(port, () => {
     console.log(`Serveur démarré sur http://localhost:${port}`)
