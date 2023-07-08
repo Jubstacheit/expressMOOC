@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const port = 3000
 const router = require('./routes');
 
@@ -11,13 +12,18 @@ app.use(express.static(path.join(__dirname, './phantom')));
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, './views'));
 
-app.locals.siteName = 'Boîte à musique';
-app.locals.socials = [
-    {url: "https://www.twitter.com", class: "fa-twitter", label: "Twitter"},
-    {url: "https://www.facebook.com", class: "fa-facebook-f", label: "Facebook"},
-    {url: "https://www.instagram.com", class: "fa-instagram", label: "Instagram"},
-    {url: "https://www.github.com", class: "fa-github", label: "Github"},
-];
+fs.readFile(path.join(__dirname, './data/config.json'), 'utf8', (err, data) => {
+    if (err) {
+        console.error("Erreur de lecture du fichier de configuration", err);
+        app.locals.siteName = '[nom du site]';
+        app.locals.socials = [{url: "#", class: "", label: ""}];
+        app.locals.liens = [{url: "/", class: "", label: "Accueil"}];
+    } else {
+        app.locals.siteName = JSON.parse(data).name;
+        app.locals.socials = JSON.parse(data).socials;
+        app.locals.liens = JSON.parse(data).liens;
+    }
+});
 
 app.use((req, res, next) => {
     console.log(`Time : ${Date.now()}, ${req.method} ${req.url}`)
