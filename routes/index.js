@@ -7,7 +7,14 @@ const contactRoute = require('./contact');
 
 module.exports = (params) => {
     router.get('/', (req, res) => {
-        res.render('layouts', {pageTitle: `Bienvenue sur la boîte à musique`, page: "index"})
+        try{
+            res.render('layouts', {pageTitle: `Bienvenue sur la boîte à musique`, page: "index"})
+        } catch (err) {
+            res.render('layouts', {
+                pageTitle: `Une erreur s'est produite`,
+                page: "erreur",
+                err: err})
+        }
     })
 
     router.use('/catalogue', catalogueRoute(params));
@@ -17,6 +24,7 @@ module.exports = (params) => {
     router.use('/', (req, res) => {
         res.render('layouts', {
             pageTitle: "Cette page n'existe pas",
+            err: false,
             page: "erreur"
             })
         }
