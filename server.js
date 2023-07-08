@@ -6,7 +6,7 @@ const port = 3000
 
 const router = require('./routes');
 const CatalogueController = require('./controllers/CatalogueController');
-const catalogueController = new CatalogueController("Je suis le catalogue");
+const catalogueController = new CatalogueController("catalog");
 const app = express();
 
 
