@@ -8,7 +8,9 @@ const contactRoute = require('./contact');
 module.exports = (params) => {
     router.get('/', (req, res) => {
         try{
-            res.render('layouts', {pageTitle: `Bienvenue sur la boîte à musique`, page: "index"})
+            res.render('layouts', {
+                pageTitle: `Bienvenue sur la boîte à musique`,
+                page: "index"})
         } catch (err) {
             res.render('layouts', {
                 pageTitle: `Une erreur s'est produite`,
